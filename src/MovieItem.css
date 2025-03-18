@@ -1,0 +1,11 @@
+.movie-img {
+  transition: filter 0.3s ease; /* Suaviza la transición */
+  filter: brightness(0.7);
+  border-radius: 10px; 
+  cursor: pointer;
+
+}
+
+.movie-img:hover {
+  filter: brightness(1.1); /* Aumenta el brillo (20%) al pasar el mouse */
+}

@@ -1,0 +1,55 @@
+/* modal.css */
+
+/* Estilo principal del modal */
+.modal-style {
+  background: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilo del encabezado */
+.modal-header {
+  background: linear-gradient(to right, #87ceeb, #ffd700);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Estilo del cuerpo del modal */
+.modal-body {
+  font-size: 1.1rem;
+  padding: 20px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+
+/* Botones con estilo */
+.modal-button {
+  background: linear-gradient(to right, #87ceeb, #ffd700);
+  border-radius: 25px;
+  font-weight: bold;
+  padding: 12px 30px;
+  font-size: 1rem;
+  transition:  0.3s ease, transform 0.3s ease;
+}
+
+.modal-button:hover {
+  transform: scale(1.05);
+}
+
+.modal-button:active {
+  transform: scale(0.98);
+}
+
+/* Estilo del enlace dentro del botón */
+.modal-footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.modal-footer a:hover {
+  color: black;
+}

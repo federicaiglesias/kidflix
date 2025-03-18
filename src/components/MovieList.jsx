@@ -1,0 +1,64 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "../MovieList.css";
+import InfiniteScroll from "react-infinite-scroll-component";
+import MovieItem from "./MovieItem";
+import RatingFilter from "./RatingFilter";
+import Hero from "./Hero";
+
+function MovieList() {
+  const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [rating, setRating] = useState(0);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/discover/movie?api_key=5acbc10fda88dccf691b96fe9829ade1&vote_average.gte=${
+            rating * 2 - 2
+          }&vote_count.gte=1000&page=${page}&with_genres=10751,16`
+        );
+        setMovies((prevMovies) => {
+          return page === 1
+            ? response.data.results
+            : [...prevMovies, ...response.data.results];
+        });
+        setHasMore(response.data.page < response.data.total_pages);
+      } catch (error) {
+        console.error("Error al obtener películas:", error);
+      }
+    };
+    fetchMovies();
+  }, [rating, page]);
+
+  const fetchMoreMovies = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
+  return (
+    <>
+    <Hero/>
+    <div className="container mb-3">
+      <RatingFilter setRating={setRating} setPage={setPage} />
+      <InfiniteScroll
+        dataLength={movies.length}
+        next={fetchMoreMovies}
+        hasMore={hasMore}
+        loader={<h4>Loading...</h4>}
+      >
+        <div className="row">
+          {movies.map((movie) => (
+            <div key={movie.id} className="col-3 mt-3">
+              <MovieItem movie={movie} />
+            </div>
+          ))}
+        </div>
+      </InfiniteScroll>
+    </div>
+    </>
+  );
+}
+
+export default MovieList;
