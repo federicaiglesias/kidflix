@@ -49,6 +49,7 @@ function MovieList() {
       <DreamworksMovies />
       <MostPopularLastScicle />
       <div className="container mb-3">
+        <h2 className="mb-3 text-center">All movies</h2>
         <RatingFilter setRating={setRating} setPage={setPage} />
         <InfiniteScroll
           dataLength={movies.length}

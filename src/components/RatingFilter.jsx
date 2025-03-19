@@ -7,8 +7,8 @@ function RatingFilter({ setRating, setPage }) {
     setRating(rate); 
   };
   return (
-    <div className="container text-center notHide my-3">
-      <h4 className="mt-3 rating-text">
+    <div className="container text-center notHide ">
+      <h4 className="rating-text">
         Filtrar por rating:
         <Rating onClick={handleRating} size={30} /> & más.
       </h4>

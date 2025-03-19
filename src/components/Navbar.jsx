@@ -37,18 +37,8 @@ function Navbar() {
         </button>
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
           <li>
-            <Link to={`/sobrenosotros`}>
-              <FaInfoCircle /> Sobre Nosotros
-            </Link>
-          </li>
-          <li>
-            <Link to={`/contacto`}>
-              <FaEnvelope /> Contacto
-            </Link>
-          </li>
-          <li>
             <Link to={`/buscar`}>
-              <FaSearch /> Buscar Películas
+              <FaSearch />SEARCH MOVIES
             </Link>
           </li>
         </ul>

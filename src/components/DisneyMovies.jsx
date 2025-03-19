@@ -52,8 +52,8 @@ function DisneyMovies() {
   };
 
   return (
-    <div className="disney-carousel container">
-      <h2>Disney movies</h2>
+    <div className="disney-carousel container mb-4">
+      <h2 className="mb-3">Disney movies</h2>
       <Carousel responsive={responsive} infinite autoPlay autoPlaySpeed={3000}>
         {movies.map((movie) => (
           <div className="me-3" key={movie.id}>
