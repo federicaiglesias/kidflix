@@ -5,6 +5,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import MovieItem from "./MovieItem";
 import RatingFilter from "./RatingFilter";
 import Hero from "./Hero";
+import DisneyMovies from "./DisneyMovies";
+import DreamworksMovies from "./DreamworksMovies";
+import MostPopularLastScicle from "./MostPopularLastScicle";
+import TopKidsMovies from "./TopMovies";
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -39,24 +43,28 @@ function MovieList() {
 
   return (
     <>
-    <Hero/>
-    <div className="container mb-3">
-      <RatingFilter setRating={setRating} setPage={setPage} />
-      <InfiniteScroll
-        dataLength={movies.length}
-        next={fetchMoreMovies}
-        hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-      >
-        <div className="row">
-          {movies.map((movie) => (
-            <div key={movie.id} className="col-3 mt-3">
-              <MovieItem movie={movie} />
-            </div>
-          ))}
-        </div>
-      </InfiniteScroll>
-    </div>
+      <Hero />
+      <TopKidsMovies/>
+      <DisneyMovies />
+      <DreamworksMovies />
+      <MostPopularLastScicle />
+      <div className="container mb-3">
+        <RatingFilter setRating={setRating} setPage={setPage} />
+        <InfiniteScroll
+          dataLength={movies.length}
+          next={fetchMoreMovies}
+          hasMore={hasMore}
+          loader={<h4>Loading...</h4>}
+        >
+          <div className="row">
+            {movies.map((movie) => (
+              <div key={movie.id} className="col-12 col-md-4 col-lg-3 mb-3">
+                <MovieItem movie={movie} />
+              </div>
+            ))}
+          </div>
+        </InfiniteScroll>
+      </div>
     </>
   );
 }

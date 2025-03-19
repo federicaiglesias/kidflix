@@ -1,6 +1,6 @@
 import "../navbar.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FaBars,
   FaTimes,
@@ -11,10 +11,24 @@ import {
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="navbar-style">
-      <div className="navbar-container">
+    <nav className={`navbar-style ${scrolled ? "scrolled" : ""}`}>
+      <div className="navbar-container container">
         <h1 className="logo">
           <Link to={`/`}>KIDFLIX</Link>
         </h1>

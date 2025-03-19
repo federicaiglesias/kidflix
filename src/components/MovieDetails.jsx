@@ -70,7 +70,15 @@ function MovieDetails() {
 
   return (
     <>
-      <div className="movie-details-page">
+      <div
+        className="movie-details-page"
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="movie-details-container">
           <div className="movie-info">
             <h1 className="movie-title">{movie.title}</h1>
@@ -115,7 +123,7 @@ function MovieDetails() {
           <iframe
             width="100%"
             height="400"
-            src={`https://www.youtube.com/embed/${video.key}`}
+            src={`https://www.youtube.com/embed/${video?.key}`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
