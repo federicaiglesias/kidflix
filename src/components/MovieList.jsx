@@ -9,6 +9,8 @@ import DisneyMovies from "./DisneyMovies";
 import DreamworksMovies from "./DreamworksMovies";
 import MostPopularLastScicle from "./MostPopularLastScicle";
 import TopKidsMovies from "./TopMovies";
+import AdventureMovies from "./AdventureMovies";
+import ComedyMovies from "./ComedyMovies";
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -44,12 +46,14 @@ function MovieList() {
   return (
     <>
       <Hero />
-      <TopKidsMovies/>
+      <TopKidsMovies />
+      <ComedyMovies />
+      <AdventureMovies />
       <DisneyMovies />
       <DreamworksMovies />
       <MostPopularLastScicle />
       <div className="container mb-3">
-        <h2 className="mb-3 text-center">All movies</h2>
+        <h2 className="mb-3 text-center font">All movies</h2>
         <RatingFilter setRating={setRating} setPage={setPage} />
         <InfiniteScroll
           dataLength={movies.length}

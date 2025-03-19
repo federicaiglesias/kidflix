@@ -3,17 +3,16 @@ import MovieItem from "./MovieItem";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-function MostPopularLastScicle() {
+function AdventureMovies() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchMostPopularLastScicle = async () => {
+    const fetchAdventureMovies = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=5acbc10fda88dccf691b96fe9829ade1&with_companies=2&primary_release_date.lte=1999-12-31&sort_by=popularity.desc
-
+          `https://api.themoviedb.org/3/discover/movie?api_key=5acbc10fda88dccf691b96fe9829ade1&with_genres=10751,12
 `
         );
         if (!response.ok) {
@@ -28,7 +27,7 @@ function MostPopularLastScicle() {
       }
     };
 
-    fetchMostPopularLastScicle();
+    fetchAdventureMovies();
   }, []);
 
   if (loading) return <p>Cargando películas de Disney...</p>;
@@ -55,7 +54,7 @@ function MostPopularLastScicle() {
 
   return (
     <div className="disney-carousel container mb-4">
-      <h2 className="mb-3 font">All times classics</h2>
+      <h2 className="mb-3 font">Adventure movies</h2>
       <Carousel responsive={responsive} infinite autoPlay autoPlaySpeed={3000}>
         {movies.map((movie) => (
           <div className="me-3" key={movie.id}>
@@ -67,4 +66,4 @@ function MostPopularLastScicle() {
   );
 }
 
-export default MostPopularLastScicle;
+export default AdventureMovies;
