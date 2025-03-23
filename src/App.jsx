@@ -1,14 +1,21 @@
-import MovieList from "./components/MovieList";
+import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
-import MovieDetails from "./components/MovieDetails";
+
+// Carga diferida de componentes
+const MovieList = lazy(() => import("./components/MovieList"));
+const MovieDetails = lazy(() => import("./components/MovieDetails"));
 
 function App() {
   return (
     <>
       <div className="googleFont">
         <Navbar />
-        <MovieList />
-        <MovieDetails />
+        <Suspense fallback={<p>Loading movies...</p>}>
+          <MovieList />
+        </Suspense>
+        <Suspense fallback={<p>Loading movie details...</p>}>
+          <MovieDetails />
+        </Suspense>
       </div>
     </>
   );

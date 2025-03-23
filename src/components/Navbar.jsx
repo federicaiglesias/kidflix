@@ -29,8 +29,10 @@ function Navbar() {
   return (
     <nav className={`navbar-style ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-container container">
-        <h1 className="logo">
-          <Link to={`/`}>KIDFLIX</Link>
+        <h1 className="logo mt-2">
+          <Link to={`/`}>
+            KIDFLIX
+          </Link>
         </h1>
         <button className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <FaTimes /> : <FaBars />}
@@ -38,7 +40,8 @@ function Navbar() {
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
           <li>
             <Link to={`/buscar`}>
-              <FaSearch />SEARCH MOVIES
+              <FaSearch />
+              SEARCH MOVIES
             </Link>
           </li>
         </ul>

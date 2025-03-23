@@ -8,10 +8,10 @@
   object-fit: cover;
 }
 .font {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
   color: #f86b80;
-  font-size: 28px;
+  font-size: 25px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 

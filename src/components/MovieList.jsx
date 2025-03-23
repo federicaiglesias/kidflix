@@ -24,7 +24,7 @@ function MovieList() {
         const response = await axios.get(
           `https://api.themoviedb.org/3/discover/movie?api_key=5acbc10fda88dccf691b96fe9829ade1&vote_average.gte=${
             rating * 2 - 2
-          }&vote_count.gte=1000&page=${page}&with_genres=10751,16`
+          }&vote_count.gte=1000&page=${page}&with_genres=10751,16,14`
         );
         setMovies((prevMovies) => {
           return page === 1

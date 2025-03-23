@@ -48,7 +48,14 @@ function MovieDetails() {
   }, [params.id]);
 
   if (loading) {
-    return <p className="loading-text">Cargando...</p>;
+    return (
+      <div className="loading-container">
+        <div className="spinner-border text-warning" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </div>
+        <p className="loading-text">Cargando película...</p>
+      </div>
+    );
   }
 
   if (error) {
@@ -84,27 +91,21 @@ function MovieDetails() {
             <h1 className="movie-title">{movie.title}</h1>
             <p className="movie-description">{movie.overview}</p>
             <p>
-              <strong>Fecha de estreno:</strong> {movie.release_date}
-            </p>
-            <p>
-              <strong>Calificación:</strong> {movie.vote_average}
-            </p>
-            <p>
-              <strong>Lenguaje:</strong> {movie.original_language}
+              <strong>Rating:</strong> {movie.vote_average}
             </p>
 
             <Button variant="warning" className="back-home-btn">
               <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-                Volver a la Home
+                Back to home
               </Link>
             </Button>
 
             <Button
               variant="warning"
               className="watch-trailer-btn"
-              onClick={() => setShowModal(true)} // Abre el modal al hacer clic
+              onClick={() => setShowModal(true)}
             >
-              Ver Tráiler
+              Watch trailer
             </Button>
           </div>
         </div>
@@ -112,20 +113,27 @@ function MovieDetails() {
 
       <Modal
         show={showModal}
-        onHide={() => setShowModal(false)} // Cierra el modal
+        onHide={() => setShowModal(false)}
         size="lg"
         centered
+        onShow={() => {
+          const iframe = document.getElementById("trailer-video");
+          if (iframe) {
+            iframe.requestFullscreen?.();
+          }
+        }}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Tráiler de {movie.title}</Modal.Title>
+          <Modal.Title>{movie.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <iframe
+            id="trailer-video"
             width="100%"
             height="400"
-            src={`https://www.youtube.com/embed/${video?.key}`}
+            src={`https://www.youtube.com/embed/${video?.key}?autoplay=1&fs=1`}
             title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         </Modal.Body>
