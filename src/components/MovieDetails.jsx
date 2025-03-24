@@ -3,7 +3,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import "../movieDetails.css"; // Archivo de estilos actualizado
+import { IoHomeOutline } from "react-icons/io5";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { MdMovieFilter } from "react-icons/md";
+import "../movieDetails.css";
 
 function MovieDetails() {
   const params = useParams();
@@ -51,9 +54,9 @@ function MovieDetails() {
     return (
       <div className="loading-container">
         <div className="spinner-border text-warning" role="status">
-          <span className="visually-hidden">Cargando...</span>
+          <span className="visually-hidden">Loading...</span>
         </div>
-        <p className="loading-text">Cargando película...</p>
+        <p className="loading-text">Loading movie...</p>
       </div>
     );
   }
@@ -61,11 +64,8 @@ function MovieDetails() {
   if (error) {
     return (
       <div className="error-container">
-        <h2>Error: No se encontró la película.</h2>
-        <p>
-          Lo sentimos, no pudimos encontrar los detalles de la película
-          solicitada.
-        </p>
+        <h2>Error: movie not found.</h2>
+        <p>Sorry, we couldn't find any details from the selected movie.</p>
         <Button variant="warning" className="back-home-btn">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             Volver a la Home
@@ -90,23 +90,27 @@ function MovieDetails() {
           <div className="movie-info">
             <h1 className="movie-title">{movie.title}</h1>
             <p className="movie-description">{movie.overview}</p>
-            <p>
+            <p className="movie-description">
               <strong>Rating:</strong> {movie.vote_average}
             </p>
 
-            <Button variant="warning" className="back-home-btn">
-              <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-                Back to home
-              </Link>
-            </Button>
-
-            <Button
-              variant="warning"
-              className="watch-trailer-btn"
-              onClick={() => setShowModal(true)}
-            >
-              Watch trailer
-            </Button>
+            <div className="d-flex justify-content-center">
+              <Button
+                variant="warning"
+                className="watch-trailer-btn d-flex px-3 py-2 mb-3"
+                onClick={() => setShowModal(true)}
+              >
+                <div>Watch trailer</div>
+              </Button>
+            </div>
+            <div className="d-flex justify-content-start">
+              <Button variant="warning" className="back-home-btn">
+                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                  <IoIosArrowRoundBack />
+                  <IoHomeOutline />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

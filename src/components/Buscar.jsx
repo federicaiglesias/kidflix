@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import MovieItem from "./MovieItem";
 import InfiniteScroll from "react-infinite-scroll-component";
+import "../search.css";
 
 function Buscar() {
   const [query, setQuery] = useState("");
@@ -29,7 +30,6 @@ function Buscar() {
           }
         );
 
-        // Filtrar solo películas que contengan los géneros permitidos
         const filteredMovies = response.data.results.filter(
           (movie) =>
             movie.genre_ids &&
@@ -61,13 +61,13 @@ function Buscar() {
   };
 
   return (
-    <div className="container mt-5 pt-5">
-      <h2>BUSCAR PELÍCULAS</h2>
-      <div className="mb-3">
+    <div className="container flow mt-5 pt-5">
+      <h2 className="title">SEARCH ALL KIDS & FAMILY MOVIES</h2>
+      <div className="mb-3 font">
         <input
           type="text"
-          className="form-control"
-          placeholder="BUSCAR POR TÍTULO..."
+          className="form-control "
+          placeholder="Type movie title..."
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);

@@ -18,7 +18,7 @@
 .movie-details-container {
   background: rgba(255, 255, 255, 0.6); /* Fondo translúcido */
   border-radius: 15px;
-  padding: 40px;
+  padding: 30px 40px;
   max-width: 900px;
   width: 100%;
   display: flex;
@@ -32,8 +32,8 @@
 /* Título de la película */
 .movie-title {
   font-size: 2.5rem;
-  color: #ffcc00;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  color: #ffcc00; /* Color brillante para mejorar el contraste */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Sombra más marcada */
   margin-bottom: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
@@ -41,53 +41,49 @@
   text-transform: uppercase;
 }
 
-/* Descripción de la película */
 .movie-description {
   font-size: 1.2rem;
   line-height: 1.8;
-  margin-bottom: 15px;
+  color: #3b3939;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Estilo de los botones */
 .back-home-btn {
-  padding: 12px 24px;
   font-size: 1.1rem;
-  font-weight: bold;
-  color: white;
-  background: #ff5733;
-  border-radius: 30px;
+  color: #3b3939;
+  background: transparent;
+  border: none;
   text-decoration: none;
-  display: inline-block;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .back-home-btn:hover {
   background: #ffcc00;
-  color: black;
   transform: scale(1.05);
 }
 
 .watch-trailer-btn {
-  padding: 12px 24px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: white;
-  background: #ff5733;
+  background: linear-gradient(to right, #87ceeb, #ffd700);
   border-radius: 30px;
   text-decoration: none;
   display: inline-block;
+  font-family: "Poppins", sans-serif;
   transition: background 0.3s ease, transform 0.3s ease;
-  margin-top: 20px;
 }
 
 .watch-trailer-btn:hover {
   background: #ffcc00;
-  color: black;
+  color: white;
   transform: scale(1.05);
 }
 
 /* Mensaje de carga */
 .loading-text {
+  font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   color: #ff5733;
   text-align: center;

@@ -10,7 +10,7 @@ function Hero() {
       <div className="hero-overlay">
         <h1 className="hero-title">WELCOME TO KIDFLIX</h1>
         <p className="hero-subtitle">
-          All kid's movies trailers in just one place
+          Watch the Best Kids' Movie Trailers – Free & Safe!
         </p>
       </div>
     </section>

@@ -1,17 +1,12 @@
 import "../navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // Usamos useLocation para detectar la ruta
 import { useState, useEffect } from "react";
-import {
-  FaBars,
-  FaTimes,
-  FaSearch,
-  FaInfoCircle,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaBars, FaTimes, FaSearch, FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation(); // Obtenemos la ubicación actual
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,13 +21,18 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isColoredNavbar =
+    location.pathname === "/buscar" || location.pathname === "/login";
+
   return (
-    <nav className={`navbar-style ${scrolled ? "scrolled" : ""}`}>
+    <nav
+      className={`navbar-style ${scrolled ? "scrolled" : ""} ${
+        isColoredNavbar ? "colored" : ""
+      }`}
+    >
       <div className="navbar-container container">
         <h1 className="logo mt-2">
-          <Link to={`/`}>
-            KIDFLIX
-          </Link>
+          <Link to={`/`}>KIDFLIX</Link>
         </h1>
         <button className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <FaTimes /> : <FaBars />}
@@ -42,6 +42,12 @@ function Navbar() {
             <Link to={`/buscar`}>
               <FaSearch />
               SEARCH MOVIES
+            </Link>
+          </li>
+          <li>
+            <Link to={`/login`}>
+              <FaUserCircle />
+              LOGIN
             </Link>
           </li>
         </ul>

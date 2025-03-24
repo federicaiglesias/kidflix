@@ -13,6 +13,7 @@ import SobreNosotros from "./components/SobreNosotros.jsx";
 import Contacto from "./components/Contacto.jsx";
 import Layout from "./components/Layout.jsx"; // Usa el nuevo Layout
 import Buscar from "./components/Buscar.jsx";
+import Login from "./components/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,12 +40,17 @@ const router = createBrowserRouter([
         path: "/buscar",
         element: <Buscar />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
     ],
   },
   {
     path: "*",
     element: <ErrorPage />,
   },
+
   {
     path: "/movie/:id",
     element: <Navigate replace to="/pelicula/:id" />,
