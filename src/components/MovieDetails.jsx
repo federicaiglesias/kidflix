@@ -90,9 +90,15 @@ function MovieDetails() {
           <div className="movie-info">
             <h1 className="movie-title">{movie.title}</h1>
             <p className="movie-description">{movie.overview}</p>
-            <p className="movie-description">
-              <strong>Rating:</strong> {movie.vote_average}
-            </p>
+            <div className="d-flex justify-content-center">
+              <p className="movie-description me-3">
+                <strong>Rating:</strong> {movie.vote_average}
+              </p>
+              <p className="movie-description">
+                <strong>Release date: </strong>
+                {movie.release_date}
+              </p>
+            </div>
 
             <div className="d-flex justify-content-center">
               <Button

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { db } from "../firebaseConfig";
+import { db } from "../firebase/firebaseConfig";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
 export const loadFavorites = createAsyncThunk(
@@ -38,6 +38,8 @@ const favoritesSlice = createSlice({
     });
   },
 });
+
+export const selectFavorites = (state) => state.favorites.favorites;
 
 export const { addFavorite, removeFavorite } = favoritesSlice.actions;
 export default favoritesSlice.reducer;

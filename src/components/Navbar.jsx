@@ -1,28 +1,36 @@
 import "../navbar.css";
-import { Link, useLocation } from "react-router-dom"; // Usamos useLocation para detectar la ruta
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaSearch, FaUserCircle } from "react-icons/fa";
+import { auth } from "../firebase/firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation(); // Obtenemos la ubicación actual
+  const [user, setUser] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
   const isColoredNavbar =
-    location.pathname === "/buscar" || location.pathname === "/login";
+    location.pathname === "/buscar" ||
+    location.pathname === "/login" ||
+    location.pathname === "/profile";
 
   return (
     <nav
@@ -40,16 +48,14 @@ function Navbar() {
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
           <li>
             <Link to={`/buscar`}>
-              <FaSearch />
-              SEARCH MOVIES
+              <FaSearch /> SEARCH MOVIES
             </Link>
           </li>
-          <li>
-            <Link to={`/login`}>
-              <FaUserCircle />
-              LOGIN
+          {/*<li>
+            <Link to={user ? `/profile` : `/login`}>
+              <FaUserCircle /> {user ? "MY PROFILE" : "LOGIN"}
             </Link>
-          </li>
+          </li>*/}
         </ul>
       </div>
     </nav>

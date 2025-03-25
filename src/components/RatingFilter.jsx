@@ -9,8 +9,8 @@ function RatingFilter({ setRating, setPage }) {
   return (
     <div className="container text-center notHide ">
       <h4 className="rating-text">
-        Filtrar por rating:
-        <Rating onClick={handleRating} size={30} /> & más.
+        Rating:
+        <Rating onClick={handleRating} size={30} /> & more.
       </h4>
     </div>
   );
