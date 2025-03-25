@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDZ3uETy9SmZKtTjp511Yh_Xfw9xk35eP8",
+  apiKey: "",
   authDomain: "kidflix-9aa45.firebaseapp.com",
   projectId: "kidflix-9aa45",
   storageBucket: "kidflix-9aa45.firebasestorage.app",
