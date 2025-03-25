@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { loadFavorites } from "../redux/favoritesSlice"; // Importa la acción
-import { auth } from "../firebase/firebaseConfig";
 import { signOut } from "firebase/auth";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";

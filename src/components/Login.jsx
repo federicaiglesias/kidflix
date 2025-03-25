@@ -1,4 +1,4 @@
-import { auth } from "../firebase/firebaseConfig";
+
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { useState } from "react";
 import { FaGoogle, FaSignOutAlt } from "react-icons/fa";

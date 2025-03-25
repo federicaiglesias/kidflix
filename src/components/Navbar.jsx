@@ -2,7 +2,6 @@ import "../navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaSearch, FaUserCircle } from "react-icons/fa";
-import { auth } from "../firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 
 function Navbar() {
@@ -20,12 +19,6 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, []);
 
   const isColoredNavbar =
     location.pathname === "/buscar" ||

@@ -1,5 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { db } from "../firebase/firebaseConfig";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";;
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
 export const loadFavorites = createAsyncThunk(
