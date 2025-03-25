@@ -84,7 +84,7 @@ function Buscar() {
         <div className="row">
           {results.length > 0 ? (
             results.map((movie) => (
-              <div key={movie.id} className="col-3 mt-3">
+              <div key={movie.id} className="col-12 col-md-4 col-lg-3 mb-3">
                 <MovieItem movie={movie} />
               </div>
             ))
